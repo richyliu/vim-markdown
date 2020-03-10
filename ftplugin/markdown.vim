@@ -38,14 +38,15 @@ function! MarkdownFold() abort
     return ">" . match(line, ' ')
   endif
 
-  let nextline = getline(v:lnum + 1)
-  if (line =~ '^.\+$') && (nextline =~ '^=\+$') && s:NotCodeBlock(v:lnum + 1)
-    return ">1"
-  endif
+  " Disabling fold support for underline-style headers to improve performance
+  " let nextline = getline(v:lnum + 1)
+  " if (line =~ '^.\+$') && (nextline =~ '^=\+$') && s:NotCodeBlock(v:lnum + 1)
+  "   return ">1"
+  " endif
 
-  if (line =~ '^.\+$') && (nextline =~ '^-\+$') && s:NotCodeBlock(v:lnum + 1)
-    return ">2"
-  endif
+  " if (line =~ '^.\+$') && (nextline =~ '^-\+$') && s:NotCodeBlock(v:lnum + 1)
+  "   return ">2"
+  " endif
 
   return "="
 endfunction
