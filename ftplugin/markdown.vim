@@ -28,7 +28,9 @@ if !exists("g:no_plugin_maps") && !exists("g:no_markdown_maps")
 endif
 
 function! s:NotCodeBlock(lnum) abort
-  return synIDattr(synID(v:lnum, 1, 1), 'name') !=# 'markdownCode'
+  " Removing this lookup speeded up load times by a lot
+  return 1
+  " return synIDattr(synID(v:lnum, 1, 1), 'name') !=# 'markdownCode'
 endfunction
 
 function! MarkdownFold() abort
